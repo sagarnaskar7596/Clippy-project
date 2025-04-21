@@ -25,7 +25,7 @@ const {fetchPins} = usePinData()
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
           <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
             <div className="flex justify-center mb-4">
-              <img src="src/clippy_icon.png" alt="Clippy" className="h-12" />
+              <img src="/clippy_icon.png" alt="Clippy" className="h-12" />
             </div>
             <h2 className="text-2xl font-semibold text-center mb-6">
               Register to Clippy
