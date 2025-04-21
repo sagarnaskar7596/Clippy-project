@@ -1,0 +1,42 @@
+/* Masonry grid container */
+.my-masonry-grid {
+    display: flex;
+    margin: 15px ; /* Adjust gutter size */
+    width: auto;
+    padding-top: 60px; /* Added space at the top */
+    margin-top: 20px; /* Added additional space */
+}
+
+/* Masonry grid columns */
+.my-masonry-grid_column {
+    padding-left: 15px; /* Adjust gutter size */
+    background-clip: padding-box;
+}
+
+/* Masonry grid items (each image container) */
+.my-masonry-grid_item {
+    margin-bottom: 15px; /* Adjust gutter size at the bottom */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Prevent overflow */
+}
+
+/* Ensure images are fully visible */
+.my-masonry-grid_item img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    border-radius: 8px; /* Rounded corners */
+    object-fit: cover; /* Prevent image from getting cut */
+}
+
+/* Fix for the first row */
+.my-masonry-grid_item:first-child {
+    margin-top: 20px;
+}
+
+/* Ensure the body has padding */
+body {
+    padding-top: 40px; /* Add spacing above the grid */
+    margin: 0;
+}
