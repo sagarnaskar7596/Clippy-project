@@ -89,7 +89,7 @@ const {fetchPins} = usePinData()
                 disabled={btnLoading}
                 className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
               >
-                {btnLoading ? <LoadingAnimation/> : "Residter"}
+                {btnLoading ? <LoadingAnimation/> : "Register"}
               </button>
             </form>
     
