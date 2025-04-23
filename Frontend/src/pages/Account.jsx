@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { UserData } from "../../context/userContext";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-
+import Masonry from "react-masonry-css";
+import styles from '../styles/Account.module.css'
 const Account = ({ user }) => {
   const navigate = useNavigate();
   const { setIsAuth, setUser } = UserData();
@@ -28,6 +29,16 @@ const Account = ({ user }) => {
   if (pins) {
     userPins = pins.filter((pin) => pin.owner === user._id);
   }
+
+
+
+    // Define breakpoints for responsive Masonry grid
+    const breakpointColumnsObj = {
+      default: 4,
+      1100: 3,
+      700: 2,
+      0: 2
+    };
 
   return (
     <div>
@@ -52,13 +63,21 @@ const Account = ({ user }) => {
             </button>
           </div>
 
-          <div className="mt-4 flex flex-wrap justify-center gap-4">
-            {userPins && userPins.length > 0 ? (
-              userPins.map((e) => <PinCard key={e._id} pin={e} />)
-            ) : (
-              <p>No Pins Yet</p>
-            )}
-          </div>
+          <div className="max-w-7xl mx-auto py-6 px-4">
+          {userPins && userPins.length > 0 ? (
+            <Masonry
+              breakpointCols={breakpointColumnsObj}
+              className={styles.masonryGrid}
+              columnClassName={styles.masonryColumn}
+            >
+              {userPins.map((pin, index) => (
+                <PinCard key={index} pin={pin} />
+              ))}
+            </Masonry>
+          ) : (
+            <p className="text-center text-gray-500 mt-6">No pins yet</p>
+          )}
+        </div>
         </div>
       </div>
     </div>
