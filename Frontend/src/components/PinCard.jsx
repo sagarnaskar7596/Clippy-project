@@ -13,9 +13,9 @@ const PinCard = ({ pin }) => {
       <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 flex items-center justify-center">
         <Link
           to={`/pin/${pin._id}`}
-          className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          className="bg-yellow-500 hover:bg-purple-700 text-white px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         >
-          View Pin
+          View Clip
         </Link>
       </div>
     </div>

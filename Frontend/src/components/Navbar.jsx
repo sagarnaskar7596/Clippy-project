@@ -5,100 +5,83 @@ const Navbar = ({ user }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
+    <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          {/* Left side - Logo/Brand */}
-          <div className="flex-shrink-0 flex items-center">
-            <Link to="/" className="flex items-center">
-              <img
-                src="/clippy_icon.png"
-                alt="clippy"
-                className="h-8 mr-2"
-              />
-              <span className="text-yellow-500 text-xl font-bold">Clippy</span>
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2">
+            <img src="/clippy_icon.png" alt="clippy" className="h-8" />
+            <span className="text-yellow-500 text-2xl font-bold tracking-wide">
+              Clippy
+            </span>
+          </Link>
+
+          {/* Desktop Nav */}
+          <div className="hidden md:flex gap-6 text-gray-700 font-medium">
+            <Link to="/" className="hover:text-yellow-500 transition-colors duration-200">
+              Home
+            </Link>
+            <Link to="/create" className="hover:text-yellow-500 transition-colors duration-200">
+              Create
             </Link>
           </div>
 
-          {/* Center - Navigation Links */}
-          <div className="hidden md:flex flex-1 justify-center">
-            <div className="flex space-x-8">
-              <Link
-                to="/"
-                className="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium"
-              >
-                Home
-              </Link>
-              <Link
-                to="/create"
-                className="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium"
-              >
-                Create
-              </Link>
-            </div>
+          {/* User Avatar */}
+          <div className="hidden md:flex">
+            <Link
+              to="/account"
+              className="w-9 h-9 rounded-full bg-yellow-400 text-white flex items-center justify-center font-bold hover:scale-105 transition transform duration-200"
+            >
+              {user.name.slice(0, 1).toUpperCase()}
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-700 hover:text-gray-900 focus:outline-none"
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden text-gray-700 focus:outline-none"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-          </div>
-
-          {/* Right side - User Avatar */}
-          <div className="hidden md:flex items-center">
-            <Link
-              to="/account"
-              className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-xl font-semibold hover:bg-gray-400 transition-colors"
-            >
-              {user.name.slice(0, 1)}
-            </Link>
-          </div>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden bg-white shadow-md py-4 px-6 absolute top-16 left-0 w-full flex flex-col space-y-4">
+      {/* Mobile Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-white shadow-inner transition-all duration-300 ease-in-out">
+          <div className="flex flex-col items-start gap-4 px-6 py-4">
             <Link
               to="/"
-              className="text-gray-700 hover:text-gray-900 text-sm font-medium"
+              className="text-gray-700 hover:text-yellow-500"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Home
             </Link>
             <Link
               to="/create"
-              className="text-gray-700 hover:text-gray-900 text-sm font-medium"
+              className="text-gray-700 hover:text-yellow-500"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Create
             </Link>
             <Link
               to="/account"
-              className="text-gray-700 hover:text-gray-900 text-sm font-medium"
+              className="text-gray-700 hover:text-yellow-500"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Account
             </Link>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </nav>
   );
 };
